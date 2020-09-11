@@ -1,0 +1,28 @@
+{
+  "name": "airtable-export",
+  "version": "0.1.1",
+  "main": "index.js",
+  "bin": {
+    "airtable-export": "./index.js"
+  },
+  "scripts": {
+    "start": "node ."
+  },
+  "repository": "https://github.com/verekia/airtable-export",
+  "keywords": [
+    "Airtable",
+    "Export",
+    "JSON",
+    "API"
+  ],
+  "author": "Jonathan Verrecchia",
+  "license": "MIT",
+  "homepage": "https://github.com/verekia/airtable-export",
+  "dependencies": {
+    "airtable": "^0.9.0",
+    "dotenv": "^8.2.0",
+    "fs-extra": "^9.0.1",
+    "json-stringify-pretty-compact": "^2.0.0",
+    "lodash": "^4.17.20"
+  }
+}
