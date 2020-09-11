@@ -2,6 +2,12 @@
 
 ## Setup
 
+Create a **.env** file containing:
+```env
+AIRTABLE_PERSONAL_KEY='keyYOUR_KEY'
+AIRTABLE_BASE_ID='appYOUR_BASE_ID'
+```
+
 Create a **airtable-export.config.json** file containing your table names and the export file destinations:
 ```json
 {
