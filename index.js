@@ -12,14 +12,14 @@ Airtable.configure({ apiKey: process.env.AIRTABLE_PERSONAL_KEY })
 
 const base = Airtable.base(process.env.AIRTABLE_BASE_ID)
 
-const exportTableData = (tableName, fileName) => {
+const exportTableData = (tableName, fileName, view) => {
   const data = {}
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     base(tableName)
-      .select()
+      .select(view ? { view } : undefined)
       .eachPage(
         (records, fetchNextPage) => {
-          records.forEach((record) => {
+          records.forEach(record => {
             data[record.id] = {
               ...record._rawJson.fields,
               id: record.id,
@@ -28,7 +28,7 @@ const exportTableData = (tableName, fileName) => {
           })
           fetchNextPage()
         },
-        (err) => {
+        err => {
           if (err) {
             console.error(err)
             return
@@ -47,8 +47,8 @@ const asyncForEach = async (array, callback) => {
 }
 
 const main = async () => {
-  asyncForEach(config.tables, async ([tableName, exportPath]) =>
-    exportTableData(tableName, exportPath)
+  asyncForEach(config.tables, async ([tableName, exportPath, view]) =>
+    exportTableData(tableName, exportPath, view)
   )
 }
 
