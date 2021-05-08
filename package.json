@@ -1,6 +1,6 @@
 {
   "name": "airtable-export",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "index.js",
   "bin": {
     "airtable-export": "index.js"

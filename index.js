@@ -13,18 +13,18 @@ Airtable.configure({ apiKey: process.env.AIRTABLE_PERSONAL_KEY })
 const base = Airtable.base(process.env.AIRTABLE_BASE_ID)
 
 const exportTableData = (tableName, fileName, view) => {
-  const data = {}
+  const data = []
   return new Promise(resolve => {
     base(tableName)
       .select(view ? { view } : undefined)
       .eachPage(
         (records, fetchNextPage) => {
           records.forEach(record => {
-            data[record.id] = {
+            data.push({
               ...record._rawJson.fields,
               id: record.id,
               createdAt: record._rawJson.createdTime,
-            }
+            })
           })
           fetchNextPage()
         },
