@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-require('dotenv/config')
+require('dotenv-flow/config')
 
 const Airtable = require('airtable')
 const fse = require('fs-extra')
